@@ -15,6 +15,7 @@ $('.time-block').each(function () {
     $(this).removeClass('present');
     $(this).addClass('future');
   }
+  console.log(time);
 });
 
 var textInp
@@ -30,8 +31,8 @@ $('.saveBtn').on("click", function () {
 // persist with saved text
 function loadedText() {
   $('.time-block').each(function () {
-    var textStored = $(this).attr('id');
-    var retrieve = localStorage.getItem(textStored);
+    var stored = $(this).attr('id');
+    var retrieve = localStorage.getItem(stored);
     if (retrieve) {
       $(this).find('.description').val(retrieve);
     }
