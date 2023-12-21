@@ -40,3 +40,15 @@ function loadedText() {
 
 window.onload =  loadedText;
 
+// Clear saved texts at end of day
+function cleanSlate() {
+  var endOfDay = dayjs().set('hour', 19);
+  var atMidnight = endOfDay.diff(dayjs());
+  
+  setTimeout(function() {
+    localStorage.clear();
+  }, atMidnight);
+
+}
+
+cleanSlate();
