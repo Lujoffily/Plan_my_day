@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-  // Display current day
+// Display current day
 $('#currentDay').text(dayjs().format('MMM D, YYYY'));
 
 // Time-block color-coded
@@ -28,28 +27,16 @@ $('.saveBtn').on("click", function () {
   localStorage.setItem(textStorage, textInp);
 });
 
-=======
-// Display current day
-$('#currentDay').text(dayjs().format('MMM D, YYYY'));
+// persist with saved text
+function loadedText() {
+  $('.time-block').each(function () {
+    var textStored = $(this).attr('id');
+    var retrieve = localStorage.getItem(textStored);
+    if (retrieve) {
+      $(this).find('.description').val(retrieve);
+    }
+  });
+}
 
-// Time-block color-coded
-var time = dayjs().format('HH:mm:ss');
+window.onload =  loadedText;
 
-$('.time-block').each(function () {
-  var timeBlock = $(this).attr("id").split("hour")[1];
-  var time = dayjs().format('HH:mm:ss');
-
-  if (time < timeBlock) {
-    $(this).addClass('past');
-    // $(this).removeClass('present');
-    // $(this).removeClass('future');
-  } else if (time = timeBlock) {
-    $(this).removeClass('past');
-    $(this).addClass('present');
-    // $(this).removeClass('future');
-  } else {
-    $(this).removeClass('present');
-    $(this).addClass('future');
-  }
-})
->>>>>>> 3cdcce9abf488a421c3222ee5b9304dba2eb1fa6
